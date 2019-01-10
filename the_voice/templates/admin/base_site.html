@@ -1,0 +1,20 @@
+
+{% extends "admin:admin/base_site.html" %}
+{% load static admin_tools_menu_tags %}
+
+{% block title %}{{ title }} | {{ site_name|default:_('The Voice') }}{% endblock %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    {% if user.is_active and user.is_staff and not is_popup %}{% admin_tools_render_menu_css %}{% endif %}
+{% endblock %}
+{% block nav-global %}
+    {{ block.super }}
+    {% if user.is_active and user.is_staff and not is_popup %}{% admin_tools_render_menu %}{% endif %}
+{% endblock %}
+
+{% block branding %}
+<a href="{% url 'admin:index' %}"><h1 id="site-name">{{ site_header|default:_('The Voice') }}</h1></a>
+{#<a href="{% url 'welcome' %}">	<i class="icon-logo light"></i></a>#}
+{% endblock %}
+

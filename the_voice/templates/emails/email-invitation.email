@@ -1,0 +1,19 @@
+{% extends 'emails/__email-default.email' %}
+
+{% with alert_title="Invitation to join {{ site_name }}" %}
+	{% block alert_header %}
+		{{ block.super }}
+	{% endblock %}
+{% endwith %}
+
+{% block main-content %}
+	<h4>Hello {{ email }},</h4>
+	<p>
+	You have been invited to join {{ site_name }}.
+	</p>
+	<p>{{ SITE_DESCRIPTION }}</p>
+	{% include 'emails/fragment-cta-button.email' with cta_url=invite_url cta_text='Accept Invitation' %}
+
+	<p>Thanks for your interest in {{ site_name }}</p>
+{% endblock %}
+

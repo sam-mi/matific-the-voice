@@ -1,0 +1,51 @@
+
+{% extends "__base.html" %}
+{% load static %}
+
+{% block title %}User: {{ user.username }}{% endblock %}
+
+{% block pre_message_header %}
+	<div class="bg-dark-blue">
+		<div class="spacer fifty"></div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="text-center">
+					<h2 class="white"><a href="{% url 'users:detail' user.username %}">{{ user.get_full_name }}</a></h2>
+				</div>
+			</div>
+		</div>
+		<div class="spacer fifty"></div>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="spacer twenty"></div>
+
+		<section class="row">
+			<div class="col-12 col-sm-4">
+				<div class="list-group">
+
+					{% if user == request.user %}
+						<a class="list-group-item" href="{% url 'users:update' %}" role="button">My Info</a>
+						<a class="list-group-item" href="{% url 'account_email' %}" role="button">E-Mail</a>
+						<a class="list-group-item" href="{% url 'account_change_password' %}" role="button">Change Password</a>
+						{% block user_self_listgroup %}{% endblock %}
+					{% endif %}
+						{% block user_listgroup %}
+
+						{% endblock %}
+
+				</div>
+			</div>
+
+			<div class="col-12 col-sm-8">
+				<div class="user-page-content">
+					{% block user_content %}{% endblock %}
+				</div>
+			</div>
+		</section>
+	</div>
+{% endblock content %}
+
+

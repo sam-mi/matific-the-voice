@@ -1,0 +1,14 @@
+{% block messages %}
+    {% if messages %}
+	<div class="container">
+	  <div class="row"><div class="spacer ten"></div>
+	      {% for message in messages %}
+			<div class="col-12">
+	        	<div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} animated fadeInDown">{{ message }}</div>
+			</div>
+	      {% endfor %}
+	  </div>
+	</div>
+    {% endif %}
+{% endblock messages %}
+

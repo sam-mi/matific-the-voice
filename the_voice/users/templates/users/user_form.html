@@ -1,0 +1,16 @@
+
+{% extends "users/user_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block user_content %}
+  <form class="form-horizontal" method="post" action="{% url 'users:update' %}">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn btn-outline-success">Update</button>
+      </div>
+    </div>
+  </form>
+{% endblock %}
+

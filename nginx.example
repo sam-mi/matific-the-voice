@@ -1,0 +1,85 @@
+upstream the_voice_server {
+  # fail_timeout=0 means we always retry an upstream even if it failed
+  # to return a good HTTP response (in case the Unicorn master nukes a
+  # single worker for timing out).
+ 
+  server 127.0.0.1:8001 fail_timeout=0;
+  # server unix:/var/www/thevoice.com/run/the_voice.gunicorn.sock fail_timeout=0;
+  
+}
+
+# Basic HTTP Server for letsencrypt and HTTPS redirect.
+server {
+  listen                50.116.11.196:80;
+  server_name           thevoice.com www.thevoice.com;
+  root /var/www/thevoice.com/the_voice;
+
+  # dont expose .env if https fails and http is active for a time.
+  location /.env {
+     return 404;
+  }
+
+  # Letsencrypt common
+  include /etc/nginx/snippets/letsencrypt-acme-challenge.conf;
+
+  location / {
+    return 301 https://$host$request_uri;
+  }
+}
+
+# Secure Application Server
+server {
+
+	  access_log /var/www/thevoice.com/logs/nginx_access.log;
+      error_log /var/www/thevoice.com/logs/nginx_error.log warn;
+
+    # Uncomment once letsencrypt has been intialised
+#	  ssl on;
+#      listen 50.116.11.196:443 ssl;
+#	  server_name thevoice.com www.thevoice.com;
+	  keepalive_timeout  70;
+
+#	  ssl_certificate  	/etc/letsencrypt/live/thevoice.com/fullchain.pem;
+#	  ssl_certificate_key  /etc/letsencrypt/live/thevoice.com/privkey.pem;
+
+      # Uncomment to enable "basic" HTTP authentication.
+#      auth_basic "the_voice";
+#      auth_basic_user_file /var/www/thevoice.com/etc/.htpasswd;
+
+	  # Maximum request body size (upload limit).
+	  client_max_body_size 8M;
+
+	  # Static Files and Media locations
+	  location /static/ {
+		alias /var/www/thevoice.com/the_voice/staticfiles/;
+	  }
+	  location /media/ {
+		alias /var/www/thevoice.com/the_voice/the_voice/media/;
+	  }
+
+      location / {
+      # location ~*.*\.(3gp|gif|jpg|jpeg|png|ico|wmv|avi|asf|asx|mpg|mpeg|mp4|pls|mp3|mid|wav|swf|flv|html|htm|txt|js|css|exe|zip|tar|rar|gz|tgz|bz2|uha|7z|doc|docx|xls|xlsx|pdf|iso)$ {
+
+
+		# Let the backend server set expires headers.
+#		expires off;
+#       expires 1M;
+
+		# Apply rate limit to backend server requests.
+#		limit_req zone=the_voice burst=10;
+
+		# an HTTP header important enough to have its own Wikipedia entry:
+        #   http://en.wikipedia.org/wiki/X-Forwarded-For
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+		proxy_pass http://the_voice_server;
+		proxy_redirect off;
+
+		proxy_set_header XForwarded-For         $proxy_add_x_forwarded_for;
+		proxy_set_header Host			        $http_host;
+		proxy_set_header X-Forwarded-Protocol	$scheme;
+		proxy_set_header X-Real-IP		        $remote_addr;
+		proxy_set_header X-Forwarded-Proto 	    https;
+
+      }
+}

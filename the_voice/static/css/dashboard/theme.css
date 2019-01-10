@@ -1,0 +1,87 @@
+/**
+ * The Voice Admin Theme
+ *
+ * build from django admin dashboard basic theme.
+ */
+
+#content {
+    padding: 0;
+    margin: 15px;
+}
+
+#header {
+    background: #252945;
+
+    /* Reset the indents of django-flat-theme
+      (need to restore 40px on branding+user-tools instead) */
+    padding: 0;
+    height: 60px;
+    /*padding-left: 0;*/
+    /*padding-right: 0;*/
+}
+
+#header #branding h1 {
+    margin: 0;
+    text-indent: 55px; /* set to -9999 to hide logo */
+    padding-top: 12px;
+    background: transparent url(../../icons/favicons/mstile-70x70.png) 5px 1px no-repeat;
+    background-size: auto 45px;
+    background-position: 15px 10px;
+    height: 50px;
+    width: 335px;
+}
+#header #branding h1 .light-blue {
+
+    background: transparent url(../../icons/favicons/mstile-70x70.png) 5px 1px no-repeat;
+}
+
+#header #user-tools {
+    /* Old Django: 1.2em, flat theme: 40px; */
+    padding-right: 1.2em;
+}
+
+#bookmark-form {
+    clear: both;
+}
+
+div.breadcrumbs {
+    display: block;
+    padding: 10px 15px;
+    border: 0;
+    background-position: 0 -8px;
+    border-bottom: 1px solid #ededed;
+}
+
+div.breadcrumbs a {
+    display: inline;
+}
+
+#header ul#navigation-menu li.first a {
+    background: transparent url(../../icons/favicons/favicon-32x32.png) -2px 4px no-repeat;
+    /*background: transparent url(../../images/logo/site-logo-sm.png) 2px 5px no-repeat;*/
+    /*background-blend-mode: color-burn;*/
+    background-size: 23px;
+
+}
+
+/*#header ul#navigation-menu li.first a:after {*/
+
+
+    /*content: "\e658";*/
+/*}*/
+
+#center-logo {
+    background: transparent url(../../icons/favicons/mstile-70x70.png) 2px 5px no-repeat;
+    /*background-blend-mode: color-burn;*/
+    background-size: 46px;
+    width:60px;
+    height: 60px;
+    position: absolute;
+    left: 48.3%;
+    top: 3px;
+}
+
+
+/*div.breadcrumbs {*/
+    /*background-color: #29ABE2;// #79aec8;*/
+/*}*/

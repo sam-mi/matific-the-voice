@@ -1,0 +1,45 @@
+
+{% extends "users/user_base.html" %}
+{% load static %}
+
+{% block header-extra-content %}
+  {{ block.super }}
+
+  {% if sitetheme.slug == 'default' %}
+  <link href="{% static 'fonts/pure-icon-font/style.css' %}" rel="stylesheet">
+  {% endif %}
+{% endblock %}
+
+{% block user_self_listgroup %}
+
+{% endblock %}
+
+{% block user_listgroup %}
+
+{% endblock %}
+
+{% block user_content %}
+	<h4>{{ user.get_full_name|capfirst }}</h4>
+	<hr>
+
+  {% if user.is_mentor %}
+    {% include 'users/mentor-detail.html' %}
+  {% endif %}
+
+  {% if user.is_mentor %}
+    {% include 'users/candidate-detail.html' %}
+  {% endif %}
+
+
+	{% if user.last_login %}<p class="tiny dark-gold">{{ user.last_login }}</p>{% endif %}
+	<div class="list-group">
+		<div class="list-group-item">{{ user.posts.count }} Posts</div>
+{#		<div class="list-group-item">{{ user.votes.count }} Votes</div>#}
+{#		<div class="list-group-item">{{ user.account.stations.count }} Organisations</div>#}
+{#		<div class="list-group-item">{{ user.account.channels.count }} Channels</div>#}
+{#		<div class="list-group-item">{{ user.account.projects.count }} Projects</div>#}
+{#		<div class="list-group-item">{{ user.my_tasks.count }} Tasks</div>#}
+{#		<div class="list-group-item">{{ user.my_tickets.count }} Tickets</div>#}
+	</div>
+{% endblock %}
+

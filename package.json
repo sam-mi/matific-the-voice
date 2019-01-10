@@ -1,0 +1,61 @@
+{
+  "name": "the_voice",
+  "version": "0.1.0",
+  "dependencies": {
+    "@public/animate.css": "daneden/animate.css#^3.5.2",
+    "@public/color-schemer": "Team-Sass/color-schemer#~0.2.8",
+    "@public/d3": "mbostock-bower/d3-bower#^4.2.6",
+    "@public/moment": "moment/moment#~2.10.6",
+    "@public/scss-blend-modes": "git://github.com/heygrady/scss-blend-modes.git#*",
+    
+    "@public/bootstrap": "twbs/bootstrap#~4.1.0",
+    "@public/jQuery": "jquery/jquery#~3.2.1-slim",
+    "@public/js-cookie": "js-cookie/js-cookie#^2.1.4",
+    "popper.js": "^1.12.6",
+    
+    "@public/typed.js": "mattboldt/typed.js#^2.0.5"
+  },
+  "devDependencies": {
+    
+    
+    "bootstrap": "^4.1.0",
+    
+    "browser-sync": "^2.14.0",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    
+    "gulp-concat": "^2.6.1",
+    
+    "gulp-cssnano": "^2.1.2",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-pixrem": "^1.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "run-sequence": "^1.2.2",
+    "gulp-inline-css": "^3.1.0",
+    "gulp-replace-path": "^0.4.0",
+    "node-sass": "4.9.2"
+    
+  },
+  "engines": {
+    "node": ">=0.8.0",
+    "yarn": ">= 1.0.0"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "rules": {
+      "semi": 2
+    }
+  },
+  "private": true
+}

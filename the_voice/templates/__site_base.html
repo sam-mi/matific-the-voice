@@ -1,0 +1,260 @@
+{% load static i18n compress %}<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<!-- Page Meta
+	============================================== -->
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+	<meta name="version" content="{{ VERSION }}">
+
+	{% block meta-title %}
+	<title>{% block full-title %}{% block title %}{% if title %}{{ title }}{% endif %}{% endblock %} | The Voice{% endblock full-title %}</title>
+	{% endblock meta-title %}
+	{% block meta-description %}
+	<meta name="description" content="{% block meta_description %}{% if page %}{{ page.meta_description }}{% else %}{{ META_DESCRIPTION }}{% endif %}">{% endblock %}
+	{% endblock meta-description %}
+
+	{% block extra_meta_tags %}
+	<meta name="author" content="{{ AUTHOR }}">
+		{% block meta-keywords %}
+			{% if page %}
+				{% if page.meta_keywords %}{{ page.meta_keywords }}{% endif %}
+				{% if page.metakeywords %}{{ page.metakeywords }}{% endif %}
+			{% endif %}
+		{% endblock %}
+	{% endblock %}
+
+	<!-- Favicons
+	============================================= -->
+
+	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'icons/favicons/apple-touch-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicons/favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'icons/favicons/favicon-16x16.png' %}">
+	<link rel="manifest" href="{% static 'icons/favicons/site.webmanifest' %}">
+	<link rel="mask-icon" href="{% static 'icons/favicons/safari-pinned-tab.svg' %}" color="#00afde">
+	<link rel="shortcut icon" href="{% static 'icons/favicons/favicon.ico' %}">
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="msapplication-config" content="{% static 'icons/favicons/browserconfig.xml' %}">
+	<meta name="theme-color" content="#2b5797">
+
+	<!-- Stylesheets
+	============================================= -->
+
+	{% block fonts %}{% endblock %}
+
+	{% block css %}
+
+    <!-- Your stuff: Third-party CSS libraries go here -->
+    {% compress css %}
+    <!-- This file stores project-specific CSS -->
+    <link href="{% static 'css/project.min.css' %}" rel="stylesheet">
+		<link href="{% static 'animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/django-common.css' %}" rel="stylesheet">
+    {% endcompress %}
+  {% endblock %}
+
+
+
+	<!-- Extra Header Content
+	============================================== -->
+
+	{% block header-extra-content %}
+		<!-- providing $ sitewide and pushing execution of that code to the footer, after jQuery has loaded -->
+		<script type='text/javascript'>window.q=[];window.$=function(f){q.push(f)}</script>
+
+		<!-- TODO: EXTRA PAGE SPECIFIC JAVASCRIPT -->
+	{% endblock %}
+
+
+	<!-- ANALYTICS
+	============================================== -->
+
+	{% block head-analytics %}
+	{#		<!-- Google Tag Manager -->#}
+	{#		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':#}
+	{#		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],#}
+	{#		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=#}
+	{#		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);#}
+	{#		})(window,document,'script','dataLayer','GTM-KTGRP5X');</script>#}
+	{#		<!-- End Google Tag Manager -->#}
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+{#		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-45112455-5"></script>#}
+{#		<script>#}
+{#			window.dataLayer = window.dataLayer || [];#}
+{#			function gtag(){dataLayer.push(arguments);}#}
+{#			gtag('js', new Date());#}
+{##}
+{#			gtag('config', 'UA-45112455-5');#}
+{#		</script>#}
+
+	{% endblock %}
+
+</head>
+
+
+<!-- BODY
+============================================== -->
+
+<body id="site" class="{% block body-class %}{% endblock %}">
+
+	{% block site %}
+		{% block cover_background %}{% endblock %}
+
+		{% block navbar %}
+			{% include "_nav.html" %}
+		{% endblock %}
+
+		{% block expander %}
+			<section id="expandForm">
+				{% include "components/expander.html" %}
+			</section>
+		{% endblock expander %}
+
+		{% block before_page %}{% endblock %}
+
+		{% block page %}
+			<div id="page" class="full-width {% block page_background %}{{ page_background|default:'page-background' }}{% endblock %}">
+				<div id="wrapper" class="{% block wrapper-class %}{% endblock %}">
+
+					{% block pre_message_header %}{% endblock %}
+
+					{% include "messages.html" %}
+
+					{% block before_content %}{% endblock %}
+
+					{% block content %}
+
+{#						Permissions should go at the start of content but not in their own block #}
+
+						{% comment %}
+
+						<!-- PAGE: MAIN CONTENT AREA
+						==============================================
+
+						This content area is used by things such as all-auth
+						It needs to be centered with margins either side and
+						have a white
+
+						-->
+						{% endcomment %}
+						<div class="row">
+							<div class="col-8 offset-2 col-lg-6 offset-lg-3 mt-5">
+								{% block contained_content %}
+
+								{% endblock %}
+							</div>
+						</div>
+
+					{% endblock content %}
+
+					{% block after_content %}{% endblock %}
+
+				</div>
+			</div><!-- / page -->
+		{% endblock page %}
+
+		{% block after_page %}{% endblock %}
+
+		{% block footer %}{% endblock %}
+
+	{% endblock site %}
+
+
+	{% block modal %}{% endblock modal %}
+
+
+	<!-- JAVASCRIPT
+	============================================== -->
+
+	{% block javascript %}
+
+			{% if DEBUG %}
+
+				<!-- DEVELOPMENT JAVASCRIPT
+				============================================== -->
+
+				{% block javascript_debug %}
+				<script src="{% static 'jQuery/dist/jquery.js' %}"></script>
+				<script src="{% static 'umd/popper.min.js' %}"></script>
+				<script src="{% static 'bootstrap/dist/js/bootstrap.js' %}"></script>
+				<script src="{% static "js-cookie/src/js.cookie.js" %}"></script>
+				<script src="{% static 'moment/moment.js' %}"></script>
+				{% endblock %}
+
+				<!-- Receive in page calls to $ and pass them the jQuery once loaded -->
+				<script>$.each(q,function(index,f){$(f)});</script>
+
+				<script type="text/javascript">
+					if((typeof Pure) === 'undefined') {
+						Pure = {};
+					}
+					Pure.DEBUG = "{% if DEBUG == True %}true{% else %}false{% endif %}";
+					window.log = function() {
+						if(Pure.DEBUG) {
+							log.history = log.history || [];   // store logs to an array for reference
+							log.history.push(arguments);
+							if(this.console){
+								var str = '';
+								for(var i=0; i<arguments.length; i++) {
+									//str += arguments[i]
+									console.log(arguments[i]);
+								}
+							}
+						}
+					};
+				</script>
+
+			{% else %}
+				<script>
+				window.log = function() {return null}
+				</script>
+
+
+				<!-- PRODUCTION JAVASCRIPT
+				============================================== -->
+
+				{% block javascript_production %}
+				<script src="{% static 'jQuery/dist/jquery.min.js' %}"></script>
+				<script src="{% static 'umd/popper.min.js' %}"></script>
+				<script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+				<script src="{% static "js-cookie/src/js.cookie.js" %}"></script>
+				<script src="{% static 'moment/min/moment.min.js' %}"></script>
+
+				<!-- Receive in page calls to $ and pass them the jQuery once loaded -->
+				<script>$.each(q,function(index,f){$(f)});</script>
+				{% endblock javascript_production %}
+			{% endif %}
+				<script type="text/javascript" src="{% static 'js/libs/jquery.animateCSS.min.js' %}"></script>
+			{% compress js %}
+				<script type="text/javascript" src="{% static 'js/django-common.js' %}"></script>
+				<script type="text/javascript" src="{% static 'js/django-common.ajax.js' %}"></script>
+				<script type="text/javascript" src="{% static 'js/project.js' %}"></script>
+
+			
+
+				{% block extra_compressed_javascript %}{% endblock %}
+
+				{#		<script type="text/javascript" src="{% static "js/plugins/jquery.formset.js" %}"></script>#}
+				<script type="text/javascript" src="{% static "ajaxuploader/js/fileuploader.js" %}"></script>
+				<script type="text/javascript" src="{% static "file_form/file_form.js" %}"></script>
+			{% endcompress %}
+	{% endblock javascript %}
+
+  {% block theme_javascript %}{% endblock %}
+
+  {% block theme_styles %}{% endblock %}
+
+	{% block fixed-elements %}
+			<!-- FIXED POSITIONED ELEMENTS at Z-INDEX: -2000 -->
+	{% endblock %}
+
+	{% block extra_body %}
+		<!-- PUT PAGE SPECIFIC JAVASCRIPT IN HERE - Override! -->
+	{% endblock %}
+</body>
+

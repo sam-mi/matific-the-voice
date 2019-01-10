@@ -1,0 +1,240 @@
+{% block html %}
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{{ title }} - {{ SITE_NAME }}</title>
+
+
+
+		<style>
+		/* -------------------------------------
+				RESPONSIVE AND MOBILE FRIENDLY STYLES
+		------------------------------------- */
+		@media only screen and (max-width: 620px) {
+			table[class=body] h1 {
+				font-size: 28px !important;
+				margin-bottom: 10px !important; }
+			table[class=body] p,
+			table[class=body] ul,
+			table[class=body] ol,
+			table[class=body] td,
+			table[class=body] span,
+			table[class=body] a {
+				font-size: 16px !important; }
+			table[class=body] .wrapper,
+			table[class=body] .article {
+				padding: 10px !important; }
+			table[class=body] .content {
+				padding: 0 !important; }
+			table[class=body] .container {
+				padding: 0 !important;
+				width: 100% !important; }
+			table[class=body] .main {
+				border-left-width: 0 !important;
+				border-radius: 0 !important;
+				border-right-width: 0 !important; }
+			table[class=body] .btn table {
+				width: 100% !important; }
+			table[class=body] .btn a {
+				width: 100% !important; }
+			table[class=body] .img-responsive {
+				height: auto !important;
+				max-width: 100% !important;
+				width: auto !important; }}
+
+			/* -------------------------------------
+					PRESERVE THESE STYLES IN THE HEAD
+			------------------------------------- */
+			@media all {
+				.ExternalClass {
+					width: 100%; }
+				.ExternalClass,
+				.ExternalClass p,
+				.ExternalClass span,
+				.ExternalClass font,
+				.ExternalClass td,
+				.ExternalClass div {
+					line-height: 100%; }
+				.apple-link a {
+					color: inherit !important;
+					font-family: inherit !important;
+					font-size: inherit !important;
+					font-weight: inherit !important;
+					line-height: inherit !important;
+					text-decoration: none !important; }
+				.btn-primary table td:hover {
+					background-color: #34495e !important; }
+				.btn-primary a:hover {
+					background-color: #34495e !important;
+					border-color: #34495e !important; }
+				.alert.alert-warning {
+					background-color: #FF9F00;
+					width: 100%;
+				}
+				.alert.alert-error {
+					background-color: #C11428;
+				}
+				.alert.alert-primary {
+					background-color: #252945;
+				}
+				.alert.alert-secondary {
+					background-color: #29ABE2;
+				}
+				.alert.alert-gold {
+					background-color: #BEAE84;
+				}
+				.alert.alert-tertiary {
+					background-color: #1d6291;
+				}
+			}
+		</style>
+
+  </head>
+  <body class="" style="-ms-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; background-color: #e7e7e2; font-family: sans-serif; font-size: 14px; line-height: 1.4; margin: 0; padding: 0;">
+    <table border="0" cellpadding="0" cellspacing="0" class="body" style="background-color: #e7e7e2; border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
+      <tr>
+        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">&nbsp;</td>
+        <td class="container" style="display: block; font-family: sans-serif; font-size: 14px; margin: 0 auto !important; max-width: 580px; padding: 10px; vertical-align: top; width: 580px;">
+          <div class="content" style="box-sizing: border-box; display: block; margin: 0 auto; max-width: 580px; padding: 10px;">
+
+            <!-- START CENTERED WHITE CONTAINER -->
+            <span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; mso-hide: all; opacity: 0; overflow: hidden; visibility: hidden; width: 0;">
+							<!-- With the 'if' the link will only appear on the email. -->
+							{% if email_uuid %}
+								You can view this e-mail on the web here:
+								<a href="{{ SITE_URL }}{% url 'templated_email:show_email' uuid=email_uuid %}" style="color: #29ABE2; text-decoration: underline;">here</a>
+							{% else %}
+								{{ preheader|default:"New message" }}
+							{% endif %}
+						</span>
+
+						<!-- ICON WRAPPER -->
+						<!-- Set wrapper width (twice) -->
+						<table border="0" cellpadding="0" cellspacing="0" align="center" width="560" style="border-collapse: collapse; border-spacing: 0; box-sizing: border-box; max-width: 560px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0; width: inherit;" class="wrapper">
+
+							<tr>
+								<td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; font-family: sans-serif; font-size: 14px; margin: 0; padding: 0; padding-bottom: 20px; padding-left: 6.25%; padding-right: 6.25%; padding-top: 20px; vertical-align: top; width: 87.5%;">
+
+									<!-- LOGO -->
+									<a target="_blank" style="color: #29ABE2; text-decoration: none;" href="{{ SITE_URL }}"><img border="0" vspace="0" hspace="0" src="{{ SITE_URL }}/static/images/logo-text.png" width="120" height="50" alt="Logo" title="Logo" style="-ms-interpolation-mode: bicubic; border: none; color: #3D3D3A; display: block; font-size: 10px; margin: 0; max-width: 100%; outline: none; padding: 0; text-decoration: none;"></a>
+								</td>
+							</tr>
+						<!-- End of WRAPPER -->
+						</table>
+
+            <table border="0" cellpadding="0" cellspacing="0" align="center" style="background: #ffffff; border-collapse: collapse; border-radius: 3px; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0; width: 100%;" class="main">
+							{% block alert_header %}
+								{% if alert_title %}
+								<tr>
+									<td class="alert alert-{{ alert_colour|default:'primary' }}" style="border-radius: 3px 3px 0 0; color: #ffffff; font-family: sans-serif; font-size: 16px; font-weight: 500; padding: 20px; text-align: center; vertical-align: top;">
+										{{ alert_title }}
+									</td>
+								</tr>
+								{% endif %}
+							{% endblock alert_header %}
+              <!-- START MAIN CONTENT AREA -->
+						{% block content %}
+              <tr>
+                <td class="wrapper" style="box-sizing: border-box; font-family: sans-serif; font-size: 14px; padding: 20px; vertical-align: top;">
+                  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
+                    <tr>
+                      <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
+												{% block main-content %}
+													<h3 style="color: #5D5D5A; font-family: sans-serif; font-weight: 400; line-height: 1.4; margin: 0; margin-bottom: 30px;">Hello {{ user.get_full_name }},</h3>
+													{% if message %}<p style="color: #3D3D3A; font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{{ message }}</p>{% endif %}
+													{% block main-content-body %}
+														{% if pre_cta_content %}
+															<p style="color: #3D3D3A; font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{{ pre_cta_content }}</p>
+														{% endif %}
+
+														{% include 'emails/fragment-cta-button.email' %}
+
+														{% if post_cta_content %}
+															<p style="color: #3D3D3A; font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{{ post_cta_content }}</p>
+														{% endif %}
+													{% endblock main-content-body %}
+													<p style="color: #3D3D3A; font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Thanks for being a part of {{ SITE_DOMAIN }}</p>
+												{% endblock main-content %}
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+            <!-- END MAIN CONTENT AREA -->
+            </table>
+						{% endblock content %}
+
+
+						<!-- SOCIAL NETWORKS -->
+						{% block social-media %}
+							<table border="0" cellpadding="0" cellspacing="0" align="center" width="560" style="border-collapse: collapse; border-spacing: 0; box-sizing: border-box; max-width: 560px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0; width: inherit;" class="wrapper">
+								<!-- Image text color should be opposite to background color. Set your url, image src, alt and title. Alt text should fit the image size. Real image size should be x2 -->
+								<tr>
+									<td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; font-family: sans-serif; font-size: 14px; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; padding-top: 25px; vertical-align: top; width: 87.5%;" class="social-icons"><table width="256" border="0" cellpadding="0" cellspacing="0" align="center" style="border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0; width: 100%;">
+										<tr>
+
+											<!-- FACEBOOK -->
+											<td align="center" valign="middle" style="border-collapse: collapse; border-spacing: 0; font-family: sans-serif; font-size: 14px; margin: 0; padding: 0; padding-left: 10px; padding-right: 10px; vertical-align: top;"><a target="_blank" href="https://facebook.com/{{ site_name }}/" style="color: #29ABE2; text-decoration: none;"><img border="0" vspace="0" hspace="0" style="-ms-interpolation-mode: bicubic; border: none; color: #3D3D3A; display: inline-block; margin: 0; max-width: 100%; outline: none; padding: 0; text-decoration: none;" alt="F" title="Facebook" width="44" height="44" src="https://raw.githubusercontent.com/konsav/email-templates/master/images/social-icons/facebook.png"></a></td>
+
+											<!-- TWITTER -->
+											<td align="center" valign="middle" style="border-collapse: collapse; border-spacing: 0; font-family: sans-serif; font-size: 14px; margin: 0; padding: 0; padding-left: 10px; padding-right: 10px; vertical-align: top;"><a target="_blank" href="https://twitter.com/{{ site_name }}/" style="color: #29ABE2; text-decoration: none;"><img border="0" vspace="0" hspace="0" style="-ms-interpolation-mode: bicubic; border: none; color: #3D3D3A; display: inline-block; margin: 0; max-width: 100%; outline: none; padding: 0; text-decoration: none;" alt="T" title="Twitter" width="44" height="44" src="https://raw.githubusercontent.com/konsav/email-templates/master/images/social-icons/twitter.png"></a></td>
+
+										</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						{% endblock social-media %}
+
+
+            <!-- START FOOTER -->
+            <div class="footer" style="clear: both; padding-top: 10px; text-align: center; width: 100%;">
+              <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
+                <tr>
+                  <td class="content-block" style="color: #A7A7A2; font-family: sans-serif; font-size: 12px; text-align: center; vertical-align: top;">
+										<span class="company-link" style="color: #A7A7A2; font-size: 12px; text-align: center;">Build with gusto in {{ COMPANY_ADDRESS }}</span>
+										{% if show_unsubscribe %}
+                    <br><br> Don't like these emails? <a href="{{ UNSUBSCRIBE_URL }}" style="color: #A7A7A2; font-size: 12px; text-align: center; text-decoration: underline;">Unsubscribe</a>.
+										{% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td class="content-block powered-by" style="color: #A7A7A2; font-family: sans-serif; font-size: 12px; text-align: center; vertical-align: top;">
+                    Powered by <a href="{{ SITE_URL }}" style="color: #A7A7A2; font-size: 12px; text-align: center; text-decoration: none;">{{ SITE_DOMAIN }}</a>.
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <!-- END FOOTER -->
+
+					<!-- ICON WRAPPER -->
+						<!-- Set wrapper width (twice) -->
+						<table border="0" cellpadding="0" cellspacing="0" align="center" width="560" style="border-collapse: collapse; border-spacing: 0; box-sizing: border-box; max-width: 560px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0; width: inherit;" class="wrapper">
+
+							<tr>
+								<td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; font-family: sans-serif; font-size: 14px; margin: 0; padding: 0; padding-bottom: 20px; padding-left: 6.25%; padding-right: 6.25%; padding-top: 20px; vertical-align: top; width: 87.5%;">
+
+									<!-- LOGO -->
+									<a target="_blank" style="color: #29ABE2; text-decoration: none;" href="{{ SITE_URL }}{% if CAN_SIGN_IN %}/u/{{ user.username }}/{% endif %}"><img border="0" vspace="0" hspace="0" src="{{ SITE_URL }}/static/images/logo.png" width="25" height="20" alt="Logo" title="Logo" style="-ms-interpolation-mode: bicubic; border: none; color: #3D3D3A; display: block; font-size: 10px; margin: 0; max-width: 100%; outline: none; padding: 0; text-decoration: none;"></a>
+
+								</td>
+							</tr>
+						<!-- End of WRAPPER -->
+						</table>
+
+
+          <!-- END CENTERED WHITE CONTAINER -->
+          </div>
+        </td>
+        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">&nbsp;</td>
+      </tr>
+    </table>
+  </body>
+</html>
+{% endblock html %}
+
+{% block subject %}{% if identifier %}[{{ identifier }}] {% endif %}{{ subject }}{% endblock %}
+

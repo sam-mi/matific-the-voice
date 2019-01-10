@@ -1,0 +1,41 @@
+{% extends 'emails/__email-default.email'%}
+{% load account %}{% user_display user as user_display %}{% load i18n %}
+
+
+
+{% block subject %}{% blocktrans %}Please Confirm Your Email Address{% endblocktrans %}{% endblock %}
+
+
+{% block alert_header %}
+<tr>
+	<td class="alert alert-secondary" style="background-color: #29ABE2; border-radius: 3px 3px 0 0; color: #ffffff; font-size: 16px; font-weight: 500; padding: 20px; text-align: center;">
+		Email Address Confirmation
+	</td>
+</tr>
+{% endblock alert_header %}
+
+{% block main-content %}
+	<h4 style="color: #5D5D5A; font-family: sans-serif; font-weight: 400; line-height: 1.4; margin: 0; margin-bottom: 30px;">
+	{% autoescape off %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Hello! from {{ site_name }}{% endblocktrans %}{% endautoescape %}
+	</h4>
+
+	<p style="color: #3D3D3A; font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">
+	{% blocktrans with site_name=current_site.name %}
+		You need to confirm your email address in order to create an account on {{ site_name }}.
+	{% endblocktrans %}
+	</p>
+
+	<p style="color: #3D3D3A; font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">
+	{% blocktrans %}
+		Please click the link below to confirm your email and log in.
+	{% endblocktrans %}
+	</p>
+
+	<p style="color: #3D3D3A; font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Thank you from {{ site_name }}!{% endblocktrans %}
+	{% include 'emails/fragment-cta-button.email' with cta_url=activate_url cta_text='Confirm Email' %}
+	</p><p style="color: #3D3D3A; font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">{{ site_domain }}</p><br>
+{% endblock %}
+
+{% block social-media %}{% endblock %}
+

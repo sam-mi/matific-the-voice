@@ -1,0 +1,700 @@
+[
+{
+    "model": "sessions.session",
+    "pk": "0ymiofqfbs8sebckfiesf40o8ha6f3md",
+    "fields": {
+        "session_data": "NWMwYWE0YjczNzcyZDMwYzhiZTBmM2IzMzRkNTAyM2U4NjZjMDZmMzp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJkYjg2MDI3OTlhMmFmZGExNzgwYjM5MDM3ZGE3MmI2Mzc0ZDRlZmI3In0=",
+        "expire_date": "2019-01-23T08:55:41.612Z"
+    }
+},
+{
+    "model": "sites.site",
+    "fields": {
+        "domain": "thevoice.com",
+        "name": "The Voice"
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "!taD4dQfJkxOhSEj62Ni2x9Uv9xc5Yx7PsqJ8adSv",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "AnonymousUser",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-01-09T08:28:02.862Z",
+        "user_type": null,
+        "salutation": null,
+        "name": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "argon2$argon2i$v=19$m=512,t=2,p=2$dVpEb0tQTUtQaUdp$eDC5W9LBGRxG3HjJ+HCFVg",
+        "last_login": "2019-01-09T08:55:41Z",
+        "is_superuser": true,
+        "username": "sam",
+        "first_name": "",
+        "last_name": "",
+        "email": "sam@purecreative.digital",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2019-01-09T08:55:36Z",
+        "user_type": "admin",
+        "salutation": null,
+        "name": "Sam Minton",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "argon2$argon2i$v=19$m=512,t=2,p=2$cmhJNksyRGtTNWVv$m03eAllX1C8x4l93HREgrg",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "timmy",
+        "first_name": "Timmy",
+        "last_name": "Testuser",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-01-09T23:37:37Z",
+        "user_type": "candidate",
+        "salutation": null,
+        "name": "Timmy Testuser",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "argon2$argon2i$v=19$m=512,t=2,p=2$T2ZrS2lCUUpGZDlF$C93S9aKVcwJcmszJQS+uNQ",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "anna",
+        "first_name": "",
+        "last_name": "",
+        "email": "anna@testuser.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-01-09T23:40:05Z",
+        "user_type": "mentor",
+        "salutation": null,
+        "name": "Anna",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "argon2$argon2i$v=19$m=512,t=2,p=2$N1FGVTk1WnJaN3ho$DoRGSK9dstNqkZ5l2e0GGw",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "freddy",
+        "first_name": "",
+        "last_name": "",
+        "email": "freddy@testuser.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2019-01-09T23:42:43Z",
+        "user_type": "candidate",
+        "salutation": null,
+        "name": "Freddy Testuser",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "argon2$argon2i$v=19$m=512,t=2,p=2$ZGVXdDc1VzlJdTVr$CJrjD77P4jMr2nvaUaE7wA",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "sarah",
+        "first_name": "",
+        "last_name": "",
+        "email": "sarah@testuser.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2019-01-09T23:44:38Z",
+        "user_type": "mentor",
+        "salutation": null,
+        "name": "Sarah Testuser",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "argon2$argon2i$v=19$m=512,t=2,p=2$eXRJS09EYldnMGQ3$IlkK/ERnUQXXa+Yz5ornAQ",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "jack",
+        "first_name": "",
+        "last_name": "",
+        "email": "jack@testuser.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-01-09T23:45:19Z",
+        "user_type": "candidate",
+        "salutation": null,
+        "name": "Jack Testuser",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "performances.team",
+    "pk": 1,
+    "fields": {
+        "status": "active",
+        "status_changed": "2019-01-09T09:06:58.181Z",
+        "created": "2019-01-09T09:06:58.181Z",
+        "modified": "2019-01-09T09:06:58.196Z",
+        "title": "A Capella Chorus",
+        "slug": "A-Capella-Chorus",
+        "candidates": null,
+        "mentors": [
+            [
+                "sam"
+            ]
+        ]
+    }
+},
+{
+    "model": "performances.team",
+    "pk": 2,
+    "fields": {
+        "status": "active",
+        "status_changed": "2019-01-09T09:07:10.564Z",
+        "created": "2019-01-09T09:07:10.564Z",
+        "modified": "2019-01-09T09:07:10.575Z",
+        "title": "Rapsters",
+        "slug": "Rapsters",
+        "candidates": null,
+        "mentors": [
+            [
+                "sam"
+            ]
+        ]
+    }
+},
+{
+    "model": "performances.team",
+    "pk": 3,
+    "fields": {
+        "status": "active",
+        "status_changed": "2019-01-09T09:07:26.159Z",
+        "created": "2019-01-09T09:07:26.159Z",
+        "modified": "2019-01-09T09:07:36.868Z",
+        "title": "Guitar Heroes",
+        "slug": "Guitar-Heroes",
+        "candidates": null,
+        "mentors": [
+            [
+                "sam"
+            ]
+        ]
+    }
+},
+{
+    "model": "performances.song",
+    "pk": 1,
+    "fields": {
+        "created": "2019-01-09T09:17:20.093Z",
+        "modified": "2019-01-09T09:17:20.093Z",
+        "title": "Joyride",
+        "artist": null
+    }
+},
+{
+    "model": "performances.song",
+    "pk": 2,
+    "fields": {
+        "created": "2019-01-09T09:18:11.053Z",
+        "modified": "2019-01-09T09:18:11.053Z",
+        "title": "Rappers Delight",
+        "artist": null
+    }
+},
+{
+    "model": "performances.song",
+    "pk": 3,
+    "fields": {
+        "created": "2019-01-09T09:18:28.149Z",
+        "modified": "2019-01-09T09:18:28.149Z",
+        "title": "5 Minutes of Funk",
+        "artist": null
+    }
+},
+{
+    "model": "performances.performance",
+    "pk": 1,
+    "fields": {
+        "status": "active",
+        "status_changed": "2019-01-09T10:08:20.422Z",
+        "created": "2019-01-09T10:08:20.422Z",
+        "modified": "2019-01-09T10:08:20.490Z",
+        "timeslot": "2019-01-09T10:08:15Z",
+        "performer": [
+            "sam"
+        ],
+        "song": 2
+    }
+},
+{
+    "model": "performances.performance",
+    "pk": 2,
+    "fields": {
+        "status": "active",
+        "status_changed": "2019-01-09T10:08:36.213Z",
+        "created": "2019-01-09T10:08:36.213Z",
+        "modified": "2019-01-09T10:08:36.263Z",
+        "timeslot": "2019-01-09T10:30:29Z",
+        "performer": [
+            "AnonymousUser"
+        ],
+        "song": 3
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2019-01-09T09:06:58.255Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "performances",
+            "team"
+        ],
+        "object_id": "1",
+        "object_repr": "A Capella Chorus",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2019-01-09T09:07:10.621Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "performances",
+            "team"
+        ],
+        "object_id": "2",
+        "object_repr": "Rapsters",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2019-01-09T09:07:26.213Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "performances",
+            "team"
+        ],
+        "object_id": "3",
+        "object_repr": "Guitar Heros",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2019-01-09T09:07:36.890Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "performances",
+            "team"
+        ],
+        "object_id": "3",
+        "object_repr": "Guitar Heroes",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"title\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2019-01-09T09:17:20.128Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "performances",
+            "song"
+        ],
+        "object_id": "1",
+        "object_repr": "Joyride",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2019-01-09T09:18:11.064Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "performances",
+            "song"
+        ],
+        "object_id": "2",
+        "object_repr": "Rappers Delight",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2019-01-09T09:18:28.161Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "performances",
+            "song"
+        ],
+        "object_id": "3",
+        "object_repr": "5 Minutes of Funk",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2019-01-09T10:08:20.506Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "performances",
+            "performance"
+        ],
+        "object_id": "1",
+        "object_repr": "Rappers Delight by sam",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2019-01-09T10:08:36.272Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "performances",
+            "performance"
+        ],
+        "object_id": "2",
+        "object_repr": "5 Minutes of Funk by AnonymousUser",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2019-01-09T23:37:37.204Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "users",
+            "user"
+        ],
+        "object_id": "3",
+        "object_repr": "timmy",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2019-01-09T23:39:27.295Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "users",
+            "user"
+        ],
+        "object_id": "3",
+        "object_repr": "timmy",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"name\", \"user_type\", \"first_name\", \"last_name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2019-01-09T23:40:05.806Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "users",
+            "user"
+        ],
+        "object_id": "4",
+        "object_repr": "anna",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2019-01-09T23:41:47.712Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "users",
+            "user"
+        ],
+        "object_id": "4",
+        "object_repr": "anna",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"name\", \"email\", \"user_type\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2019-01-09T23:42:43.798Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "users",
+            "user"
+        ],
+        "object_id": "5",
+        "object_repr": "freddy",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2019-01-09T23:43:12.948Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "users",
+            "user"
+        ],
+        "object_id": "5",
+        "object_repr": "freddy",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"name\", \"email\", \"user_type\", \"is_staff\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2019-01-09T23:43:30.386Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "users",
+            "user"
+        ],
+        "object_id": "3",
+        "object_repr": "timmy",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"user_type\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2019-01-09T23:43:44.969Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "users",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "sam",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"name\", \"user_type\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2019-01-09T23:43:57.349Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "users",
+            "user"
+        ],
+        "object_id": "5",
+        "object_repr": "freddy",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"user_type\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2019-01-09T23:44:38.857Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "users",
+            "user"
+        ],
+        "object_id": "6",
+        "object_repr": "sarah",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2019-01-09T23:45:02.341Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "users",
+            "user"
+        ],
+        "object_id": "6",
+        "object_repr": "sarah",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"name\", \"email\", \"user_type\", \"is_staff\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2019-01-09T23:45:19.553Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "users",
+            "user"
+        ],
+        "object_id": "7",
+        "object_repr": "jack",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2019-01-09T23:45:34.354Z",
+        "user": [
+            "sam"
+        ],
+        "content_type": [
+            "users",
+            "user"
+        ],
+        "object_id": "7",
+        "object_repr": "jack",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"name\", \"email\", \"user_type\"]}}]"
+    }
+},
+{
+    "model": "dashboard.dashboardpreferences",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "sam"
+        ],
+        "data": "{}",
+        "dashboard_id": "dashboard"
+    }
+},
+{
+    "model": "dashboard.dashboardpreferences",
+    "pk": 2,
+    "fields": {
+        "user": [
+            "sam"
+        ],
+        "data": "{}",
+        "dashboard_id": "performances-dashboard"
+    }
+},
+{
+    "model": "dashboard.dashboardpreferences",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "sam"
+        ],
+        "data": "{}",
+        "dashboard_id": "users-dashboard"
+    }
+}
+]

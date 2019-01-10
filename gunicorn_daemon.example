@@ -1,0 +1,14 @@
+[Unit]
+Description=gunicorn daemon for thevoice.com on EOS
+After=network.target
+
+[Service]
+User=django
+Group=www-data
+Environment=DJANGO_DEBUG=False
+WorkingDirectory=/var/www/thevoice.com/the_voice
+ExecStart=/var/www/envs/the_voice/bin/gunicorn --workers 3 --bind 127.0.0.1:8001 config.wsgi:application --log-file=/var/www/thevoice.com/logs/gunicorn.log
+
+
+[Install]
+WantedBy=multi-user.target

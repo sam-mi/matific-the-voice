@@ -1,0 +1,10 @@
+{% extends 'emails/__email-default.email' %}
+
+{% block main-content %}
+	<h4>Hello {{ email }},</h4>
+	<p>
+	{% if inviter %}{{ inviter }} has{% else %}You have been{% endif %} invited you to join {{ context }} on {{ site_name }} as {{ role }}
+	</p>
+	{% include 'emails/fragment-cta-button.email' with cta_url=invite_url cta_text='Accept Invitation' %}
+{% endblock %}
+

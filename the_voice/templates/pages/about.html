@@ -1,0 +1,59 @@
+{% extends "__content_page.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="container full-height">
+	<div class="row">
+		<div class="col-10 offset-1">
+
+				<div class="spacer ninety"></div>
+				<div class="d-flex justify-content-center">
+					<img src="{% static 'images/logo/logo.png' %}" alt="Pure CMS Logo">
+				</div>
+				<div class="spacer fifty"></div>
+
+		</div>
+		<div class="col-5 offset-1">
+				<h1 class="card-title">Pure CMS</h1>
+				<p class="card-text">A production ready, hyper-extensible, theme-able full featured CMS built on Django, Wagtail and Bootstrap 4 <br>by <a href="http://purecreative.digital">Pure Creative.</a></p>
+				<p class="small">A cookiecutter project with many questions that customise the installation</p>
+				<h5>Features
+				</h5>
+				<ul>
+					<li>Builds on Pure Stack</li>
+					<li>Django Wagtail</li>
+					<li>Abstract and Concrete Wagtail pages</li>
+					<li>Django Common CBVs etc</li>
+					<li>Themable</li>
+					<li>Canvas Theme</li>
+					<li>Bootstrap 4 Components</li>
+				</ul>
+		</div>
+		<div class="col-5">
+
+				<h1 class="card-title">Pure Stack</h1>
+				<p class="card-text">A production ready, light weight app stack extensible with pure creative apps <br>by <a href="http://purecreative.digital">Pure Creative.</a></p>
+				<p class="small">A cookiecutter project with many questions that customise the installation</p>
+
+				<ul>
+					<li>Light weight</li>
+					<li>Built on Django Common CBVs etc</li>
+					<li>Themable</li>
+					<li>Extend with:
+						<ul>
+							<li>Django Context</li>
+							<li>Pure Democracy</li>
+							<li>Pure Discussion</li>
+							<li>Django Proximity Roles</li>
+							<li>Pure Accounts</li>
+							<li>Pure Events</li>
+							<li>Tracker</li>
+						</ul>
+					</li>
+				</ul>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
