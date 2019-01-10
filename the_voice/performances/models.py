@@ -3,7 +3,7 @@ import uuid
 from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.db.models import QuerySet, DateTimeField, IntegerField
+from django.db.models import QuerySet, DateTimeField, IntegerField, Avg
 from django_common.models.abstract import AbstractTimeStampedStatusModel, AbstractTimestampedModel
 from model_utils import Choices
 
@@ -42,10 +42,21 @@ class Team(AbstractTimeStampedStatusModel):
 
         :return:
         """
+        candidates = self.candidates.filter(
+            user_type=USER_TYPE_CHOICES.candidate
+        ).annotate(avg_score=Avg('performances__scores__score')).order_by('avg_score')
+        return candidates
 
-    # class Meta:
-
-
+    @property
+    def performance_average(self) -> float:
+        """
+        Return a running average of scores
+        :return:
+        """
+        average = Performance.objects.filter(
+            performer__in=self.candidates.all()
+        ).aggregate(average_score=Avg('scores__score'))
+        return average['average_score']
 
 
 class Song(AbstractTimestampedModel):
@@ -143,6 +154,15 @@ class Performance(AbstractTimeStampedStatusModel):
         if self.score and self.status == self.ACTIVE.complete:
             return True
         return False
+
+    def total_score(self):
+        """
+        The average score from all of the cores by mentors
+        :return:
+        """
+        total = self.scores.aggregate(total=Avg('score'))
+        return total['total']
+
 
     def __str__(self):
         return f'{self.song} by {self.performer.get_full_name()}'
