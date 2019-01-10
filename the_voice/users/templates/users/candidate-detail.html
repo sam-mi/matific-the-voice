@@ -1,1 +1,51 @@
-<h1> I am a Candidate</h1>
+
+
+  <h3 class="mb-5">{{ user.team }} <span class="small">(Team Candidate)</span></h3>
+  <p><strong>Mentors</strong></p>
+    <div class="list-group flex-row">
+
+    {% for mentor in user.team.mentors.all %}
+      <div class="list-group-item">
+        <a href="{% url 'users:detail' mentor.username %}">{{ mentor.get_full_name }}</a>
+      </div>
+    {% endfor %}
+    </div>
+  <div class="my-3">
+    <p><strong>Performances</strong></p>
+  </div>
+
+  {% for performance in user.performances.all %}
+  <div class="card mb-3">
+  <div class="card-header">
+    <h4 class="float-left">
+      {{ performance.song }} <span class="small">by</span> <a href="{% url 'users:detail' performance.performer.username %}">
+      {{ performance.performer.get_full_name }}</a>
+    </h4>
+    <p class="float-right">
+      {{ performance.status }}{% if performance.timeslot %} ∙ {{ performance.timeslot }}{% endif %}
+    </p>
+  </div>
+  <div class="card-body">
+    <div class="d-flex flex-row justify-content-between">
+      <h6 class="tiny">Scores</h6>
+      <h6 class="mr-3">Total: {{ performance.total_score }}</h6>
+    </div>
+      <div class="list-group">
+    {% for score in performance.scores.all %}
+        <div class="list-group-item">
+          <h6 class="float-left" style="margin-bottom: 0;">
+            {{ score }} <span class="small">({{ score.created }})</span>
+          </h6>
+          <h6 class="float-right"  style="margin-bottom: 0;">
+            {{ score.score }}
+          </h6>
+        </div>
+    {% endfor %}
+      </div>
+  </div>
+  </div>
+  {% endfor %}
+
+
+
+<hr>

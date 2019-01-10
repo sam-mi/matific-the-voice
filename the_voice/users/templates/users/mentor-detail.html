@@ -1,1 +1,33 @@
-<h1> I am a Mentor</h1>
+
+<h3>My Teams (Mentor)</h3>
+<hr>
+
+{% for team in user.teams.all %}
+
+  <div class="card mb-3">
+
+  <div class="card-header">
+    <div class="d-flex flex-row justify-content-between">
+      <h5>{{ team }}</h5>
+      <h5>Team Average: {{ team.performance_average|stringformat:".2f" }}</h5>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <p><strong>Candidates</strong></p>
+    {% for candidate in team.candidates.all %}
+      <div class="d-flex flex-row justify-content-between">
+
+      <p>
+        <a href="{% url 'users:detail' candidate.username %}">{{ candidate }}</a>
+      </p>
+      <p>
+        Performances: {{ candidate.performances.count }}
+      </p>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+{% endfor %}
+
+<hr>

@@ -7,45 +7,29 @@
 
   <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Centered nav only <span class="sr-only">(current)</span></a>
+      <li class="nav-item active mr-auto">
+        <a class="nav-link" href="{% url 'users:detail' request.user.username %}">{{ request.user.get_full_name }}</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-      
+
+{#    TODO: Teams list & detail pages etc. #}
+{#      {% if user.is_authenticated %}#}
+{#        <li class="nav-item mr-auto">#}
+{#          <a class="nav-link" href="" title="Teams"><span class="hidden-md-down">Teams</span></a>#}
+{#        </li>#}
+{#      {% endif %}#}
+
       {% if user.is_authenticated %}
-        <li class="nav-item mr-auto">
-          <a class="nav-link" href="" title="Create"><span class="hidden-md-down">Create</span></a>
+        <li class="nav-item mr-4">
+          <a class="nav-link" href="{% url 'account_logout' %}" title="{% trans 'Logout' %}">Logout</a>
+        </li>
+      {% else %}
+        <li class="nav-item mr-4">
+          <a class="nav-link" href="{% url 'account_signup' %}" title="{% trans 'Sign Up' %}"><span class="hidden-md-down">{% trans "Sign Up" %}</span><i class="vs-lightning hidden-lg-up"></i></a>
+        </li>
+        <li class="nav-item mr-4">
+          <a class="nav-link" href="{% url 'account_login' %}" title="{% trans 'Login' %}"><span class="hidden-md-down">{% trans "Login" %}</span><i class="vs-enter hidden-lg-up"></i></a>
         </li>
       {% endif %}
-      <!--<li class="nav-item dropdown">-->
-        <!--<a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>-->
-        <!--<div class="dropdown-menu" aria-labelledby="dropdown10">-->
-          <!--<a class="dropdown-item" href="#">Action</a>-->
-          <!--<a class="dropdown-item" href="#">Another action</a>-->
-          <!--<a class="dropdown-item" href="#">Something else here</a>-->
-        <!--</div>-->
-      <!--</li>-->
-      
-      {% if user.is_authenticated %}
-                <li class="nav-item ml-4 mr-4">
-      {#						<a class="nav-link" href="{% url 'core:dashboard' %}"><i class="vs-profile large" title="{% trans 'Profile' %}: {{ request.user }}" data-toggle="tooltip" data-placement="left"></i></a>#}
-                </li>
-                <li class="nav-item mr-4">
-                  <a class="nav-link" href="{% url 'account_logout' %}" title="{% trans 'Logout' %}">Logout</a>
-                </li>
-              {% else %}</li>
-                <li class="nav-item mr-4">
-                  <a class="nav-link" href="{% url 'account_signup' %}" title="{% trans 'Sign Up' %}"><span class="hidden-md-down">{% trans "Sign Up" %}</span><i class="vs-lightning hidden-lg-up"></i></a>
-                </li>
-                <li class="nav-item mr-4">
-                  <a class="nav-link" href="{% url 'account_login' %}" title="{% trans 'Login' %}"><span class="hidden-md-down">{% trans "Login" %}</span><i class="vs-enter hidden-lg-up"></i></a>
-                </li>
-              {% endif %}
     </ul>
   </div>
 </nav>

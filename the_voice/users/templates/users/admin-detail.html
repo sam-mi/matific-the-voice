@@ -1,0 +1,20 @@
+
+<h3>Teams Overview (average scores)</h3>
+
+{% for team in teams %}
+
+  <ul class="list-group">
+    <li class="list-group-item">
+      <div class="d-flex flex-row justify-content-between">
+        <h6>
+          {{ team }}
+        </h6>
+        <h6>
+          {{ team.performance_average|stringformat:'.2f' }}
+        </h6>
+      </div>
+    </li>
+  </ul>
+{% endfor %}
+
+<hr>

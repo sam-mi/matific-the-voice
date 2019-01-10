@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from allauth.account.views import EmailView
 
+from the_voice.performances.models import Team
 from .models import User
 
 
@@ -12,6 +13,11 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     # These next two lines tell the view to index lookups by username
     slug_field = 'username'
     slug_url_kwarg = 'username'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['teams'] = Team.objects.filter(status=Team.STATUS.active)
+        return context
 
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):

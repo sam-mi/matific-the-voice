@@ -40,7 +40,7 @@ class UserAdmin(AuthUserAdmin):
                                        'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
     ) #+ AuthUserAdmin.fieldsets
-    list_display = ['username', 'email', 'name', 'user_type', 'is_staff', 'last_login']
+    list_display = ['username', 'email', 'team', 'user_type', 'is_staff', 'last_login']
     search_fields = ['name']
 
     raw_id_fields = ['team']
