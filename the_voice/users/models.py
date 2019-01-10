@@ -21,6 +21,13 @@ class User(AbstractUser):
         blank=True, null=True
     )
 
+    team = models.ForeignKey(
+        'performances.Team',
+        blank=True, null=True,
+        on_delete=models.PROTECT,
+        related_name='candidates'
+    )
+
     # First Name and Last Name do not cover name patterns around the globe.
     salutation = models.CharField(_('Salutation'), blank=True, null=True, max_length=55)
     name = models.CharField(_('Name of User'), blank=True, null=True, max_length=255)

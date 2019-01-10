@@ -35,12 +35,13 @@ class UserAdmin(AuthUserAdmin):
     add_form = MyUserCreationForm
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
-        (_('Personal info'), {'fields': ('name', 'email', 'user_type')}),
+        (_('Personal info'), {'fields': ('name', 'email', 'user_type', 'team')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
     ) #+ AuthUserAdmin.fieldsets
     list_display = ['username', 'email', 'name', 'user_type', 'is_staff', 'last_login']
     search_fields = ['name']
-    
+
+    raw_id_fields = ['team']
 

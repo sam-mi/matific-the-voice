@@ -1,12 +1,13 @@
 import uuid
 
 from django.contrib.auth import get_user_model
-from django.contrib.postgres.fields import IntegerRangeField
-from django.contrib.postgres.validators import RangeMinValueValidator, RangeMaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.db.models import QuerySet, DateTimeField, IntegerField
 from django_common.models.abstract import AbstractTimeStampedStatusModel, AbstractTimestampedModel
 from model_utils import Choices
+
+from the_voice.users.models import USER_TYPE_CHOICES
 
 User = get_user_model()
 
@@ -28,12 +29,6 @@ class Team(AbstractTimeStampedStatusModel):
     mentors = models.ManyToManyField(
         User,
         related_name='teams'
-    )
-    candidates = models.ForeignKey(
-        User,
-        on_delete=models.PROTECT,
-        related_name='team',
-        blank=True, null=True
     )
 
     def __str__(self):
@@ -91,16 +86,16 @@ class Score(AbstractTimestampedModel):
         # default=NumericRange(0, 101),
         blank=True,
         validators=[
-            RangeMinValueValidator(1),
-            RangeMaxValueValidator(100)
+            MinValueValidator(1),
+            MaxValueValidator(100)
         ]
     )
 
     def __str__(self):
-        return f'{self.mentor} - {self.performance}'
+        return self.mentor.get_full_name()
 
     class Meta:
-        unique_together = ('mentor', 'performance', 'score')
+        unique_together = ('mentor', 'performance')
 
 
 class Performance(AbstractTimeStampedStatusModel):
@@ -124,6 +119,12 @@ class Performance(AbstractTimeStampedStatusModel):
         help_text="Performance Time Slot is the date and time that a performance is "
                   "scheduled to take place, including the duration of the performance."
     )
+    team = models.ForeignKey(
+        Team,
+        on_delete=models.SET_NULL,
+        blank=True, null=True,
+        related_name='performances',
+    )
     performer = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -144,15 +145,21 @@ class Performance(AbstractTimeStampedStatusModel):
         return False
 
     def __str__(self):
-        return f'{self.song} by {self.performer}'
+        return f'{self.song} by {self.performer.get_full_name()}'
 
     class Meta:
-        unique_together = ('performer', 'song')
+        unique_together = (
+            ('performer', 'song', 'team'),
+        )
+        ordering = ("-timeslot",)
 
+
+# TODO: Phase 2 - group performances per episode
 
 # class Episode(AbstractTimeStampedStatusModel):
 #     """
 #     An Episode of the Show
 #
 #     Each episode is composed of a series of performances with time slots
+#     which are conceptually grouped together as 'actions'
 #     """
