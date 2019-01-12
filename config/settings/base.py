@@ -86,7 +86,6 @@ THIRD_PARTY_APPS = [
     
     # django activity stream (following etc)
 
-    
 
     # templates
     'mathfilters',
@@ -96,16 +95,7 @@ THIRD_PARTY_APPS = [
     'django_file_form.ajaxuploader',
 
     'genericadmin',  # admin help for content_types
-    'django_common',
-    
-    
-    
-    
-    
-    
-    # 'django_social_share',
-    # 'colorful',
-    # 'django_common.publishing',
+
 
 ]
 
@@ -131,9 +121,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    
-    'django_common.middleware.ThreadLocalMiddleware',
 
 ]
 

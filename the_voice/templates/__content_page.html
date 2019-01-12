@@ -1,0 +1,46 @@
+{% extends "__base.html" %}
+{% load static %}
+{% if settings.COMPRESS_ENABLED %}{% load compress %}{% endif %}
+
+
+{% block page %}
+	<div id="page" class="{% block page_background %}{{ page_background|default:'page-background' }}{% endblock %}">
+
+			{% block sidebar-nav %}
+				{{ block.super }}
+			{% endblock %}
+
+					{% include "messages.html" %}
+
+							{% block before-content %}
+							{% endblock %}
+
+							<div id="page-content-wrapper">
+							{% block content %}
+								<div class="row">
+									<div class="col-8 offset-2 col-lg-6 offset-lg-3 mt-5">
+										{% block contained_content %}
+
+										{% endblock %}
+									</div>
+								</div>
+
+							{% endblock content %}
+							</div>
+
+							{% block after-content %}
+							{% endblock %}
+
+				<div class="spacer one-fifty"></div>
+	</div>
+{% endblock page %}
+
+
+{% block extra_body %}
+	{{ block.super }}
+	{% if settings.COMPRESS_ENABLED %}
+		{% compress js %}<script type="text/javascript" src="{% static 'js/libs/jquery.datetimepicker.js' %}"></script>{% endcompress %}
+	{% else %}
+		<script type="text/javascript" src="{% static 'js/libs/jquery.datetimepicker.js' %}"></script>
+	{% endif %}
+{% endblock %}

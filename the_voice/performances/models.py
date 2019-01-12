@@ -4,9 +4,9 @@ from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.db.models import QuerySet, DateTimeField, IntegerField, Avg
-from django_common.models.abstract import AbstractTimeStampedStatusModel, AbstractTimestampedModel
 from model_utils import Choices
 
+from the_voice.abstract_models import AbstractTimeStampedStatusModel, AbstractTimestampBase
 from the_voice.users.models import USER_TYPE_CHOICES
 
 User = get_user_model()
@@ -59,7 +59,7 @@ class Team(AbstractTimeStampedStatusModel):
         return average['average_score']
 
 
-class Song(AbstractTimestampedModel):
+class Song(AbstractTimestampBase):
     """
     A Song is Performed by a User
     """
@@ -76,7 +76,7 @@ class Song(AbstractTimestampedModel):
         return self.title
 
 
-class Score(AbstractTimestampedModel):
+class Score(AbstractTimestampBase):
     """
     A score is for a single Performance by a single Mentor
 

@@ -97,25 +97,6 @@ class CustomIndexDashboard(Dashboard):
                         'rest_framework.*',
                     )
                 ),
-                modules.AppList(
-                    title='Mailing Lists',
-                    models=(
-                        'django_common.mailing_list.*',
-                    )
-                ),
-                # modules.AppList(
-                #     title='Invitations',
-                #     models=(
-                #         'the_voice.vsinvitations.*',
-                #         'invitations.*',
-                #     )
-                # ),
-                modules.AppList(
-                    title='File Resources',
-                    models=(
-                        'django_common.file.resources.*',
-                    )
-                ),
             ]
         ))
 
