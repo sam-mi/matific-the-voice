@@ -2,7 +2,7 @@
 <h3>My Teams (Mentor)</h3>
 <hr>
 
-{% for team in user.teams.all %}
+{% for team in request.user.teams.all %}
 
   <div class="card mb-3">
 

@@ -1,15 +1,17 @@
 
-
+{% if user.team %}
   <h3 class="mb-5">{{ user.team }} <span class="small">(Team Candidate)</span></h3>
   <p><strong>Mentors</strong></p>
-    <div class="list-group flex-row">
+  <div class="list-group flex-row">
 
-    {% for mentor in user.team.mentors.all %}
-      <div class="list-group-item">
-        <a href="{% url 'users:detail' mentor.username %}">{{ mentor.get_full_name }}</a>
-      </div>
-    {% endfor %}
+  {% for mentor in user.team.mentors.all %}
+    <div class="list-group-item">
+      <a href="{% url 'users:detail' mentor.username %}">{{ mentor.get_full_name }}</a>
     </div>
+  {% endfor %}
+  </div>
+{% endif %}
+
   <div class="my-3">
     <p><strong>Performances</strong></p>
   </div>

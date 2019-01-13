@@ -16,7 +16,11 @@ class UserDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['teams'] = Team.objects.filter(status=Team.STATUS.active)
+        context['teams'] = Team.objects.filter(
+            status=Team.STATUS.active,
+            mentors__pk=self.object.pk
+        )
+        print(context)
         return context
 
 

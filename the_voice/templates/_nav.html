@@ -7,9 +7,10 @@
 
   <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
     <ul class="navbar-nav">
-      <li class="nav-item active mr-auto">
-        <a class="nav-link" href="{% url 'users:detail' request.user.username %}">{{ request.user.get_full_name }}</a>
-      </li>
+      {% if user.is_authenticated %}
+        <li class="nav-item active mr-auto">
+          <a class="nav-link" href="{% url 'users:detail' request.user.username %}">{{ request.user.get_full_name }}</a>
+        </li>
 
 {#    TODO: Teams list & detail pages etc. #}
 {#      {% if user.is_authenticated %}#}
@@ -18,7 +19,6 @@
 {#        </li>#}
 {#      {% endif %}#}
 
-      {% if user.is_authenticated %}
         <li class="nav-item mr-4">
           <a class="nav-link" href="{% url 'account_logout' %}" title="{% trans 'Logout' %}">Logout</a>
         </li>
