@@ -13,9 +13,6 @@ User = get_user_model()
 
 
 class Team(AbstractTimeStampedStatusModel):
-    """
-
-    """
 
     title = models.CharField(
         max_length=255,
@@ -36,25 +33,29 @@ class Team(AbstractTimeStampedStatusModel):
 
     def rank_candidates(self) -> QuerySet:
         """
-        Return a list of Performances ordered by the aggregate of scores
-        by mentors for the candidates that have completed / created a
-        Performance already.
+        Candidates ranked by their average score
+        out of the existing scores that have been given
 
-        :return:
+        :return: QuerySet of Candidates
         """
+
         candidates = self.candidates.filter(
-            user_type=USER_TYPE_CHOICES.candidate
-        ).annotate(avg_score=Avg('performances__scores__score')).order_by('avg_score')
+            user_type=USER_TYPE_CHOICES.candidate,
+            performances__scores__isnull=False
+        ).annotate(
+            avg_score=Avg('performances__scores__score')
+        ).order_by('avg_score')
         return candidates
 
     @property
     def performance_average(self) -> float:
         """
         Return a running average of scores
-        :return:
+
+        :return: float between 0 and 100
         """
         average = Performance.objects.filter(
-            performer__in=self.candidates.all()
+            performer__in=self.candidates.all(),
         ).aggregate(average_score=Avg('scores__score'))
         return average['average_score']
 
@@ -86,7 +87,6 @@ class Score(AbstractTimestampBase):
     mentor = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
-
     )
     performance = models.ForeignKey(
         'Performance',
@@ -94,13 +94,15 @@ class Score(AbstractTimestampBase):
         related_name='scores'
     )
     score = IntegerField(
-        # default=NumericRange(0, 101),
-        blank=True,
         validators=[
-            MinValueValidator(1),
+            MinValueValidator(0),
             MaxValueValidator(100)
         ]
     )
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return self.mentor.get_full_name()
@@ -147,13 +149,15 @@ class Performance(AbstractTimeStampedStatusModel):
         related_name='performances'
     )
 
-    def get_team(self):
-        return self.performer.team
-
     def is_completed(self):
-        if self.score and self.status == self.ACTIVE.complete:
+        if not self.team and not self.performer.team:
+            return False
+        if not self.scores.count() == self.team.mentors.count():
+            return False
+        else:
+            if self.status in self.ACTIVE and not self.status == self.ACTIVE.complete:
+                self.status = self.ACTIVE.complete
             return True
-        return False
 
     def total_score(self):
         """
@@ -163,6 +167,14 @@ class Performance(AbstractTimeStampedStatusModel):
         total = self.scores.aggregate(total=Avg('score'))
         return total['total']
 
+    def save(self, *args, **kwargs):
+        if not self.performer.team:
+            # if the performer has no team, the performance can have no team
+            # and therefore cannot be included and must be set to inactive.
+            self.status = self.STATUS.inactive
+        elif not self.team or not self.team == self.performer.team:
+            self.team = self.performer.team
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.song} by {self.performer.get_full_name()}'
