@@ -21,23 +21,6 @@ class CustomMenu(Menu):
         self.children += [
             items.MenuItem(_('Dashboard'), reverse('admin:index')),
             items.Bookmarks(),
-            # items.AppList(
-            #     _('Context'),
-            #     models=(
-            #         'the_voice.context.*',
-            #         'the_voice.feature.*',
-            #         'the_voice.follow.*',
-            #         'django_proximity_roles.*',
-            #     ),
-            # ),
-            # items.AppList(
-            #     _('Decisions'),
-            #     models=(
-            #         'the_voice.polls.*',
-            #         'the_voice.polls.*',
-            #         'the_voice.decisions.*',
-            #     )
-            # ),
             items.AppList(
                 _('ALL'),
             ),
@@ -45,22 +28,16 @@ class CustomMenu(Menu):
                 _('Accounts'),
                 models=(
                     'the_voice.users.*',
-                    'django_proximity_roles.*',
+                    'the_voice.performances.*',
                     'the_voice.accounts.*',
                     'allauth.*',
                     'rest_framework.*',
-                    # 'the_voice.vsinvitations.*',
-                    'invitations.*',
-                    'actstream.*',
                 )
             ),
 
             items.AppList(
                 _('Administration'),
                 models=(
-                    # 'the_voice.tracker.*',
-                    # 'the_voice.resources.*',
-                    'django_file_form.*',
                     'django.contrib.*',
                 )
             )

@@ -80,22 +80,13 @@ THIRD_PARTY_APPS = [
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
     
-
     'braces',
     'guardian',  # object permissions
-    
-    # django activity stream (following etc)
-
 
     # templates
     'mathfilters',
 
-    # forms
-    'django_file_form',
-    'django_file_form.ajaxuploader',
-
     'genericadmin',  # admin help for content_types
-
 
 ]
 
